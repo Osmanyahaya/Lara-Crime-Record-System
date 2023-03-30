@@ -1,10 +1,12 @@
 <x-guest-layout>
+    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
+        <h2 class="mb-6 bg-blue-700 text-white rounded">Welcome to Ghana Police Crime Management System</h2>
     <x-auth-card>
-        <x-slot name="logo">
+      
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+               <img  src="images/logo.png" height="100px" >
             </a>
-        </x-slot>
+       
 
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -53,4 +55,6 @@
             </div>
         </form>
     </x-auth-card>
+</div>
+<x-footer/>
 </x-guest-layout>

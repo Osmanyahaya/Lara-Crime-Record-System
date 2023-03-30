@@ -35,6 +35,7 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
+            'role_id' => ['required', 'string', 'max:50'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
@@ -42,12 +43,17 @@ class RegisteredUserController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'role_id' =>$request->role_id,
             'password' => Hash::make($request->password),
         ]);
 
+        // parameter can be a Role object, array, id or the role string name
+        $user->attachRole($request->role_id); 
+
+
         event(new Registered($user));
 
-        Auth::login($user);
+        //Auth::login($user);
 
         return redirect(RouteServiceProvider::HOME);
     }

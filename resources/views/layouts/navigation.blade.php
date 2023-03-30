@@ -5,16 +5,34 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
+                    <a href="#">
+                        <x-application-logo class="block h-10 w-auto" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                    
+
+                    <x-nav-link :href="route('cases.index')" :active="request()->routeIs('cases.index')">
+                        {{ __('View Cases') }}
                     </x-nav-link>
+                     @if(Auth::user()->hasRole('admin') || Auth::user()->hasRole('nco'))
+                    <x-nav-link :href="route('cases.create')" :active="request()->routeIs('cases.create')">
+                        {{ __('Add Case') }}
+                    </x-nav-link>
+                    @endif
+                    @if(Auth::user()->hasRole('admin'))
+                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
+                        {{ __('View Staff') }}
+                    </x-nav-link>
+                    
+
+                    <x-nav-link :href="route('register')" :active="request()->routeIs('register')">
+                        {{ __('Add Staff') }}
+                    </x-nav-link>
+
+                    @endif
                 </div>
             </div>
 

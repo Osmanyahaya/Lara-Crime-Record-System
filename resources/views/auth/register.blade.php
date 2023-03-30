@@ -1,11 +1,14 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Dashboard') }}
+        </h2>
+    </x-slot>
 
+    <div class="py-12">
+        
+        <x-auth-card>
+       
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
@@ -45,6 +48,18 @@
                                 name="password_confirmation" required />
             </div>
 
+
+            <div class="mt-4">
+                <x-label for="role" :value="__('Select Role')" />
+
+                <select class="civanoglu-input w-full" name="role_id" id="role_id">
+                    <option value="">Select Role</option>
+                    <option value="admin">Admin</option>
+                    <option value="nco">NCO</option>
+                    <option value="cid">CID Officer</option>
+                </select>
+            </div>
+
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
                     {{ __('Already registered?') }}
@@ -56,4 +71,6 @@
             </div>
         </form>
     </x-auth-card>
-</x-guest-layout>
+             
+    </div>
+</x-app-layout>
