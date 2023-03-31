@@ -21,7 +21,7 @@ Route::get('/', function () {
     return view('auth.login');
 }); 
 
-Route::group(['middleware'=>['auth', 'role:cid', 'role:admin'  ]], function(){
+Route::group(['middleware'=>['auth', 'role:cid|admin'  ]], function(){
 Route::post('/investigations/{investigation}/edit', [InvestigationController::class, 'updateInvestigation'])->name('investigations.store');
 Route::get('/investigation/create/{case}', [InvestigationController::class, 'create'])->name('investigations.create');
 
@@ -31,7 +31,7 @@ Route::get('/investigation/show/{investigation}', [InvestigationController::clas
 
 
 
-Route::group(['middleware'=>['auth', 'role:admin','role:nco' ]], function(){
+Route::group(['middleware'=>['auth', 'role:admin|nco' ]], function(){
   Route::get('/investigation/{case}', [InvestigationController::class, 'assignCase'])->name('investigation.assign');
   Route::post('/investigations/', [InvestigationController::class, 'store'])->name('assign.store');
  
