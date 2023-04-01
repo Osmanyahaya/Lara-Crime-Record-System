@@ -1,11 +1,19 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+This Crime Record and Management System can help law enforcement agencies in many ways. For example, it can reduce paperwork, minimize data entry errors, and improve data accuracy. It can also help officers identify and track patterns of criminal activity and improve communication between departments and jurisdictions.
+Moreover, it can provide officers with immediate access to critical information, such as criminal histories and outstanding warrants, which can help them make better-informed decisions and respond more effectively to emergency situations. Additionally, it can assist in resource allocation, budgeting, and planning by providing accurate and timely data on crime trends and patterns.
+Overall, this Crime Record and Management System is a powerful tool that can help law enforcement agencies improve their operations, increase public safety, and reduce crime.
+Contributions are welcome to make this system better
+
 </p>
+<p>
+<h1>Note</h1>
+The database can be set up using the sql database file  in the database directory. But you can still use to the db seeder
+
+</p>
+
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+
 
 ## About Laravel
 
