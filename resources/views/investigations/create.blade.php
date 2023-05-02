@@ -4,7 +4,7 @@
 
            
             <h2 class="font-semibold text-xl text-gray-800 leading-tight inline-block">
-                {{ __('Investigation Statement')  }} of case number ({{$case->id}}), Reported by {{$case->complainant_name}} on {{$case->created_at}}
+                {{ __('Investigation Statement')  }} of case number ({{$case->reference}}), Reported by {{$case->complainant_name}} on {{$case->created_at}}
             </h2>
             <a href=""
                 class="px-4 py-2 hover:text-white text-white rounded-md text-base bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500">Back</a>

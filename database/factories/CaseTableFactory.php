@@ -18,14 +18,17 @@ class CaseTableFactory extends Factory
     {
 
         return [
-             //'user_id' => User::factory(),
-            //'category_id' => Category::factory(),
+
+            'user_id' => User::factory(),
+            'category_id' => Category::factory(),
             'complainant_gender' =>$this->faker->randomElement(['Female','Male']),
-            'complainant_age' => $this->faker->randomElement(['18','20','23','60','10']),
+            'complainant_age' => $this->faker->randomElement(['28','60','23','60','59','40']),
             'complainant_name' => $this->faker->name(),
+            'dig_address' => 'Ns-0998790098',
             'complainant_tel' => $this->faker->phoneNumber(),
-            'complainant_occupation' => $this->faker->randomElement(['Tearcher','Farmer','Mechanic','Programmer']),
+            'complainant_occupation' => $this->faker->randomElement(['Traider','Tearcher','Farmer','Mechanic','Programmer']),
             'region' => $this->faker->city(),
+            'address' => $this->faker->city(),
             'district' => $this->faker->city(),
             'location' => $this->faker->city(),
             'diary_of_action' => $this->faker->paragraphs(10),

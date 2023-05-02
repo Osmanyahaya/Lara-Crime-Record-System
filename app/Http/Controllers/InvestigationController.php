@@ -25,6 +25,8 @@ class InvestigationController extends Controller
 
     public function store(Request $request)
     {   
+        // This is where case is stored when assigned to CID
+        
         $formFields = $request->validate([
             'case_table_id' => ['required', Rule::unique('investigations', 'case_table_id')],
             'user_id' => 'required',
@@ -34,14 +36,26 @@ class InvestigationController extends Controller
         $cidName=User::findOrFail($formFields['user_id'])->name;
 
         $formFields['cid_name']=$cidName;
-        Investigation::create($formFields);
+       $assignedCID = Investigation::create($formFields);
+
+       if( $assignedCID){
+        return redirect('/cases')->with('success', 'The Case Assigned a CID!');
+       }
+
+       return back()->with('error', 'The Case has not being Assigned a CID! Try Again');   
     }
 
     public function create($case)
     {
         $case= CaseTable::with('investigation')->findOrFail($case);
-       
-        
+
+        //If case has no being assgin yet
+        if($case->investigation==null){
+
+            return redirect('/cases')->with('error', 'The Case has not being Assigned a CID!');
+             
+        }
+
          return view('investigations.create',['case'=>$case]);
    
     }
@@ -54,15 +68,23 @@ class InvestigationController extends Controller
 
             
         ]);
-       
-
 
         $investigation->update($formFields);
+
+        return back()->with('success', 'The Investigation Statement Updated Successfully');
     }
 
     public function show($id)
     {
-        $case=CaseTable::findOrFail($id);
+       $case= CaseTable::with('investigation')->findOrFail($id);
+
+         //If case has no being assgin yet
+        if($case->investigation==null){
+
+        return back()->with('error', 'The Case has not being Assigned a CID!');
+             
+        }
+
         return view('investigations.show',['case'=>$case]);
 
     }

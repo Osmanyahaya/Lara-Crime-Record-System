@@ -9,9 +9,7 @@
     </x-slot>
 
 
-    @if (session('message'))
-        <div id="notice" class="text-center bg-green-100 text-green-700 p-3">{{ session('message') }}</div>
-    @endif
+    
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -19,62 +17,65 @@
                 <div class="">
                     <div class="">
                     <table class="w-full table-auto mb-4">
-                        <thead class="bg-green-500 text-white">
+                        <thead class="bg-blue-700 text-white">
                             <tr>
-                                <th colspan="2" class="border px-4 text-xl py-4">Complainant Details</th>
+                                <th  class="border px-4 text-xl py-4">Case Number: {{ $case->reference ?? 'Tamale' }} </th>
                                 
                             </tr>
                         </thead>
                         <tbody>
-                           
-                                <tr>
-                                    <td class="border px-4 py-2" width="40px">Case Number:</td>
-                                    <td class="border px-4 py-2">{{ $case->id ?? 'Tamale' }}</td>
+                          <tr>
+                                    <td colspan="4" class="border px-4 py-2"><h4>Complainant Personal Info...</h4></td>
+                                   </td>
                                     
                                 </tr>
                                  <tr>
-                                    <td class="border px-4 py-2">Complainant Name:</td>
-                                    <td class="border px-4 py-2">{{ $case->complaint_name ?? 'Tamale' }}</td>
+                                    <td class="border px-4 py-2"><h5>Complainant Name:</h5></td>
+                                    <td class="border px-4 py-2"><strong>{{ $case->complainant_name ?? 'Tamale' }}</strong></td>
+
+                                     <td class="border px-4 py-2">Complainanat Age:</td>
+                                    <td class="border px-4 py-2">{{ $case->complainant_age ?? 'Tamale' }}</td>
                                     
                                 </tr>
+                               
                                  <tr>
-                                    <td class="border px-4 py-2">Complainant Gender:</td>
-                                    <td class="border px-4 py-2">{{ $case->complainant_gender ?? '' }}</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td class="border px-4 py-2">Complainant Age:</td>
-                                    <td class="border px-4 py-2">{{ $case->complainant_age ?? '' }}</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td class="border px-4 py-2">Complainant Tel:</td>
-                                    <td class="border px-4 py-2">{{ $case->complainant_tel ?? '' }}</td>
-                                    
-                                </tr>
-                                <tr>
                                     <td class="border px-4 py-2">Occupation:</td>
                                     <td class="border px-4 py-2">{{ $case->complainant_occupation?? '' }}</td>
+
+                                    <td class="border px-4 py-2">Telephone :</td>
+                                    <td class="border px-4 py-2">{{ $case->complainant_tel?? '' }}</td>
                                     
                                 </tr>
-                                <tr>
+                                 <tr>
+                                    <td colspan="4" class="border px-4 py-2">Complainant Address/Location...</td>
+                                   </td>
+                                    
+                                </tr>
+                                 <tr>
+                                    <td class="border px-4 py-2">Email Address:</td>
+                                    <td class="border px-4 py-2">{{ $case->email?? '' }}</td>
+                                    
+                              
+                                    <td class="border px-4 py-2">Location:</td>
+                                    <td class="border px-4 py-2">{{ $case->location ?? '' }}</td>
+                                    
+                                </tr>
+                                 <tr>
+                                    <td class="border px-4 py-2">Redential Address:</td>
+                                    <td class="border px-4 py-2">{{ $case->address?? '' }}</td>
+                                    
+                              
+                                    <td class="border px-4 py-2">Digital Address:</td>
+                                    <td class="border px-4 py-2">{{ $case->dig_address ?? '' }}</td>
+                                    
+                                </tr>
+
+                                 <tr>
                                     <td class="border px-4 py-2">Region:</td>
                                     <td class="border px-4 py-2">{{ $case->region ?? '' }}</td>
                                     
-                                </tr>
-                                <tr>
                                     <td class="border px-4 py-2">District:</td>
                                     <td class="border px-4 py-2">{{ $case->district ?? '' }}</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td class="border px-4 py-2">Address:</td>
-                                    <td class="border px-4 py-2">{{ $case->address?? '' }}</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td class="border px-4 py-2">Native of :</td>
-                                    <td class="border px-4 py-2">{{ $case->location ?? '' }}</td>
                                     
                                 </tr>
                            

@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex justify-between items-center">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight inline-block">
-                {{ __('Add New Case') }}
+                {{ __('Edit New Case') }}
             </h2>
             <a href=""
                 class="px-4 py-2 hover:text-white text-white rounded-md text-base bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500">Back</a>
@@ -13,12 +13,13 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="m-4">
-                    <form action="{{route('cases.store')}}" method="post" class="p-6 bg-white border-b border-gray-200" enctype="multipart/form-data">
+                    <form action="{{route('cases.update',$case->id)}}" method="post" class="p-6 bg-white border-b border-gray-200" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <div class="flex gap-4 -mx-4 mb-6">
                             <div class="flex-1 px-4">
                                 <label class="civanoglu-label" for="name">Name of Complainant <span class="required-text">*</span></label><br>
-                                <input class="civanoglu-input w-full" type="text" id="name" name="complainant_name" value="{{old('complainant_name')}}" required>
+                                <input class="civanoglu-input w-full" type="text" id="name" name="complainant_name" value="{{$case->complainant_name}}" required>
 
                                 @error('complainant_name')
                                     <p class="text-red-500 mt-2 text-sm">{{$message}}</p>
@@ -27,7 +28,7 @@
 
                             <div class="flex-1 px-4">
                                 <label class="civanoglu-label" for="name_tr">Phone Number <span class="required-text">*</span></label><br>
-                                <input class="civanoglu-input w-full" type="text" id="name_tr" name="complainant_tel" value="{{old('complainant_tel')}}" required>
+                                <input class="civanoglu-input w-full" type="text" id="name_tr" name="complainant_tel" value="{{$case->complainant_tel}}" required>
 
                                 @error('complainant__tel')
                                     <p class="text-red-500 mt-2 text-sm">{{$message}}</p>
@@ -36,7 +37,7 @@
 
                             <div class="flex-1 px-4">
                                 <label class="civanoglu-label" for="address">Residential Address <span class="required-text">*</span></label><br>
-                                <input class="civanoglu-input w-full" type="text" id="raddress" name="address" value="{{old('address')}}" required>
+                                <input class="civanoglu-input w-full" type="text" id="raddress" name="address" value="{{$case->address}}" required>
 
                                 @error('address')
                                     <p class="text-red-500 mt-2 text-sm">{{$message}}</p>
@@ -50,7 +51,7 @@
                             
                             <div class="flex-1 px-4">
                                 <label class="civanoglu-label" for="name">Complainant Occupation <span class="required-text">*</span></label><br>
-                                <input class="civanoglu-input w-full" type="text" id="name" name="complainant_occupation" value="{{old('complainant_occupation')}}" required>
+                                <input class="civanoglu-input w-full" type="text" id="name" name="complainant_occupation" value="{{$case->complainant_occupation}}" required>
 
                                 @error('complainant_occupation')
                                     <p class="text-red-500 mt-2 text-sm">{{$message}}</p>
@@ -58,7 +59,7 @@
                             </div>
                             <div class="flex-1 px-4">
                                 <label class="civanoglu-label" for="age">Age <span class="required-text">*</span></label><br>
-                                <input class="civanoglu-input w-full" type="text" id="name_tr" name="complainant_age" value="{{old('complainant_age')}}" required>
+                                <input class="civanoglu-input w-full" type="text" id="name_tr" name="complainant_age" value="{{$case->complainant_age}}" required>
 
                                 @error('complainant_age')
                                     <p class="text-red-500 mt-2 text-sm">{{$message}}</p>
@@ -104,7 +105,7 @@
                             </div>
                             <div class="flex-1 px-4">
                                 <label class="civanoglu-label" for="age">Location <span class="required-text">*</span></label><br>
-                                <input class="civanoglu-input w-full" type="text" id="location" name="location" value="{{old('location')}}">
+                                <input class="civanoglu-input w-full" type="text" id="location" name="location" value="{{$case->location}}">
 
                                 @error('location')
                                     <p class="text-red-500 mt-2 text-sm">{{$message}}</p>
@@ -117,7 +118,7 @@
                         <div class="flex -mx-4 mb-6">
                              <div class="flex-1 px-4">
                                 <label class="civanoglu-label" for="address">Digital Address </label><br>
-                                <input class="civanoglu-input w-full" type="text" id="digaddress" name="dig_address" value="{{old('dig_address')}}">
+                                <input class="civanoglu-input w-full" type="text" id="digaddress" name="dig_address" value="{{$case->dig_address}}">
 
                                 @error('dig_address')
                                     <p class="text-red-500 mt-2 text-sm">{{$message}}</p>
@@ -126,7 +127,7 @@
 
                              <div class="flex-1 px-4">
                                 <label class="civanoglu-label" for="address">Email Address</label><br>
-                                <input class="civanoglu-input w-full" type="text" id="email" name="email" value="{{old('email')}}">
+                                <input class="civanoglu-input w-full" type="text" id="email" name="email" value="{{$case->email}}">
 
                                 @error('email')
                                     <p class="text-red-500 mt-2 text-sm">{{$message}}</p>
@@ -137,9 +138,9 @@
                             <div class="flex-1 px-4">
                                 <label class="civanoglu-label" for="location_id">Category <span class="required-text">*</span></label>
                                 <select class="civanoglu-input w-full" name="category_id" id="category_id" required>
-                                    <option value="">Select location</option>
+                                    <option value="">Select Category</option>
                                     @foreach($categories as $cat)
-                                        <option {{old('category_id')==$cat->id ? 'selected="selected"' : ''}} value="{{$cat->id}}">{{$cat->description}}</option>
+                                        <option {{$case->category_id==$cat->id ? 'selected="selected"' : ''}} value="{{$cat->id}}">{{$cat->description}}</option>
                                     @endforeach
                                 </select>
 
@@ -153,7 +154,7 @@
 
                             <div class="flex-1 px-4">
                                 <label class="civanoglu-label" for="diary-of-action">Diary of Action <span class="required-text">*</span></label>
-                                <textarea class="civanoglu-input w-full" name="diary_of_action" id="diary-of-action" cols="30" rows="3" required>{{old('diary_of_action')}}</textarea>
+                                <textarea class="civanoglu-input w-full" name="diary_of_action" id="diary-of-action" cols="30" rows="3" required>{{$case->diary_of_action}}</textarea>
 
                                 @error('diary_of_action')
                                     <p class="text-red-500 mt-2 text-sm">{{$message}}</p>
@@ -163,7 +164,7 @@
                         </div>
 
 
-                        <button  class="px-4 py-2 hover:text-white text-white rounded-md text-base bg-gradient-to-r from-green-400 to-blue-500">Save</button>
+                        <button  class="px-4 py-2 hover:text-white text-white rounded-md text-base bg-gradient-to-r from-green-400 to-blue-500">Update</button>
                     </form>
                 </div>
             </div>

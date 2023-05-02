@@ -25,8 +25,10 @@ class CreateCaseTablesTable extends Migration
             $table->string('region');
             $table->string('district');
             $table->string('address');
-
+            $table->string('reference')->unique();
             $table->string('location');
+            $table->string('dig_address')->nullable();
+            $table->email('email')->nullable();
             $table->string('complainant_age');
             $table->string('complainant_gender');
         });

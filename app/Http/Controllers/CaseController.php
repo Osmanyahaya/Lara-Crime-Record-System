@@ -5,6 +5,7 @@ use App\Models\Category;
 use App\Models\CaseTable;
 use Illuminate\Http\Request;
 use App\Http\Requests\CaseStoreRequest;
+use App\Http\Requests\CaseTableUpdateRequest;
 use App\Models\User;
 
 use Illuminate\Support\Facades\Auth;
@@ -55,12 +56,12 @@ class CaseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CaseStoreRequest $request)
     {
 
         ///dd($request->complainant_name);
         $userId=Auth::user()->id;
-        $product = CaseTable::create(
+        $case = CaseTable::create(
             [
             'user_id' => $userId,
             'complainant_name' => $request->complainant_name,
@@ -74,9 +75,11 @@ class CaseController extends Controller
             'diary_of_action' => $request->diary_of_action,
             'address' => $request->address,
             'category_id' => $request->category_id,
+            'dig_address' => $request->dig_address,
+            'email' => $request->email,
             ]);
 
-        return redirect('/cases')->with('message', 'Case created successfully!');
+        return redirect('/cases')->with('success', 'Case created successfully!');
 
     }
 
@@ -101,7 +104,10 @@ class CaseController extends Controller
      */
     public function edit($id)
     {
-        //
+      $case=CaseTable::findOrFail($id);
+      
+      $categories= Category:: all();
+      return view('cases.edit',['case'=>$case,'categories'=>$categories]); 
     }
 
     /**
@@ -111,9 +117,27 @@ class CaseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CaseTableUpdateRequest $request, CaseTable $case)
     {
-        //
+        $formFields = 
+            [
+            'complainant_name' => $request->complainant_name,
+            'complainant_tel' => $request->complainant_tel,
+            'complainant_age' => $request->complainant_age,
+            'complainant_occupation' => $request->complainant_occupation,
+            'complainant_gender' => $request->complainant_gender,
+            'region' => $request->region,
+            'district' => $request->district,
+            'location' => $request->location,
+            'diary_of_action' => $request->diary_of_action,
+            'address' => $request->address,
+            'dig_address' => $request->dig_address,
+            'email' => $request->email,
+            'category_id' => $request->category_id,
+            ];
+
+        $case->update($formFields);
+        return redirect('/cases')->with('success', 'Case updated successfully!');
     }
 
     /**
@@ -122,9 +146,12 @@ class CaseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(CaseTable $case)
     {
-        //
+
+       $case->delete();
+
+        return redirect('/cases')->with('success', 'Case deleted successfully');
     }
 //Case Assignment form
 

@@ -32,6 +32,14 @@
                         {{ __('Add Staff') }}
                     </x-nav-link>
 
+                    <x-nav-link :href="route('categories.index')" :active="request()->routeIs('categoreis.index')">
+                        {{ __('View Categories') }}
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('categories.create')" :active="request()->routeIs('categoreis.create')">
+                        {{ __('Add Category') }}
+                    </x-nav-link>
+
                     @endif
                 </div>
             </div>

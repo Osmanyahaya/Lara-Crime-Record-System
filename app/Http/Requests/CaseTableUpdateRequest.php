@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CaseStoreRequest extends FormRequest
+class CaseTableUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,10 +21,6 @@ class CaseStoreRequest extends FormRequest
      *
      * @return array
      */
-
-
-     
-            
     public function rules()
     {
         return [

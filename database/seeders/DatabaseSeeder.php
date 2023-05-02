@@ -18,8 +18,11 @@ class DatabaseSeeder extends Seeder
     public function run()
     {     
         $this->call(LaratrustSeeder::class);
-         $user=User::factory(2)->create();
-          $cat=Category::factory(5)->create();
+        $this->call(SuperUserSeeder::class);
+        $cat=Category::factory(5)->create();
+
+         //$user=User::factory(2)->create();
+         
         //  CaseTable::factory()->create(
         //  [
         //     'user_id' => $user->id,

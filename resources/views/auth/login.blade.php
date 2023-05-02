@@ -1,6 +1,6 @@
 <x-guest-layout>
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-        <h2 class="mb-6 bg-blue-700 text-white rounded">Welcome to Ghana Police Crime Management System</h2>
+        
     <x-auth-card>
       
             <a href="/">
