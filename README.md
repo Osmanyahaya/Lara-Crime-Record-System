@@ -48,8 +48,8 @@ Installation
 7.	Run php artisan db:seed
 8.	Run php artisan serve
 9.	Login with the following credentials
-o	Email: admin@ggmail.com
-o	Password: password
+o	Email: admin@test.com
+o	Password: 12345678
 10.	Thank You!
 License
 The Laravel framework is open-sourced software licensed under the MIT license.
