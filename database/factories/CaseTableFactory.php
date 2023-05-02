@@ -19,8 +19,8 @@ class CaseTableFactory extends Factory
 
         return [
 
-            'user_id' => User::factory(),
-            'category_id' => Category::factory(),
+            'user_id' => 1,
+            'category_id' => $this->faker->randomElement(['1','2','3']),
             'complainant_gender' =>$this->faker->randomElement(['Female','Male']),
             'complainant_age' => $this->faker->randomElement(['28','60','23','60','59','40']),
             'complainant_name' => $this->faker->name(),
