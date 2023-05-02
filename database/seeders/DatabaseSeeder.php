@@ -20,14 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(LaratrustSeeder::class);
         $this->call(SuperUserSeeder::class);
         $this->call(CategorySeeder::class);
-        $cat=CaseTable::factory(20)->create();
-
-         //$user=User::factory(2)->create();
-         
-        //  CaseTable::factory()->create(
-        //  [
-        //     'user_id' => $user->id,
-        //     'category_id' => $cat->id,
-        // ]);
+        
     }
 }
